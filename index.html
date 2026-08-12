@@ -14,7 +14,7 @@
   :root{
     --paper:#F1F0F5;--panel:#FFFFFF;--ink:#191524;--muted:#6B6579;--line:#E3E0EB;
     --violet:#5B3DF5;--violet-soft:#5B3DF514;--coral:#FF4D79;--coral-soft:#FF4D7914;
-    --radius:16px;--maxw:820px;--cjk:"Noto Sans TC";
+    --radius:16px;--maxw:820px;--sidebar:300px;--cjk:"Noto Sans TC";
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -44,6 +44,13 @@
   .socials a{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;background:#ffffff14;border:1px solid #ffffff20;transition:.2s}
   .socials a:hover{background:#ffffff2b;border-color:#ffffff55;transform:translateY(-3px)}
   .socials svg{width:19px;height:19px;color:#fff}
+
+  /* English sidebar: prevent long text from expanding the layout */
+  body.lang-en .hero h1{font-size:2rem}
+  body.lang-en .hero h1 .en{font-size:.42em;white-space:nowrap;letter-spacing:.04em}
+  body.lang-en .hero .inst{font-size:.82rem;line-height:1.55;max-width:235px;margin-left:auto;margin-right:auto}
+  body.lang-en .navlinks a{font-size:11px;letter-spacing:.05em;white-space:nowrap;padding-left:10px;padding-right:10px}
+  body.lang-en .hero{overflow-x:hidden}
 
   main{margin-left:var(--sidebar);min-height:100vh}
   section{padding:66px 0}
