@@ -26,32 +26,26 @@
   .disp{font-family:"Bricolage Grotesque",var(--cjk),sans-serif;letter-spacing:-.02em}
   .mono{font-family:"JetBrains Mono",monospace}
 
-  /* HERO */
-  .hero{position:relative;text-align:center;color:#fff;overflow:hidden;
-    background:radial-gradient(120% 140% at 50% -10%, #9388D4 0%, #6D62B3 42%, #40396F 100%);
-    padding:72px 24px 60px}
-  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
-    background:linear-gradient(90deg,transparent,#ffffff30,transparent)}
-  .langbtn{position:absolute;top:20px;right:20px;font-family:"JetBrains Mono",monospace;
-    font-size:13px;color:#fff;background:#ffffff1a;border:1px solid #ffffff33;
-    padding:7px 15px;border-radius:999px;cursor:pointer;transition:.2s;font-weight:500}
+  /* LEFT SIDEBAR */
+  .hero{position:fixed;left:0;top:0;width:var(--sidebar);height:100vh;text-align:center;color:#fff;overflow-y:auto;
+    background:radial-gradient(140% 120% at 50% -10%, #9388D4 0%, #6D62B3 45%, #40396F 100%);
+    padding:52px 24px 36px;z-index:100;display:flex;flex-direction:column}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,#ffffff30,transparent)}
+  .langbtn{position:absolute;top:18px;right:18px;font-family:"JetBrains Mono",monospace;font-size:12px;color:#fff;background:#ffffff1a;border:1px solid #ffffff33;padding:7px 14px;border-radius:999px;cursor:pointer;transition:.2s;font-weight:500}
   .langbtn:hover{background:#fff;color:var(--ink)}
-  .avatar{width:148px;height:148px;border-radius:50%;object-fit:cover;object-position:center top;
-    border:3px solid #ffffff2e;box-shadow:0 12px 40px -12px #00000066;margin:0 auto 26px;display:block}
-  .hero h1{font-weight:800;font-size:clamp(2.1rem,6vw,3rem);line-height:1.1}
-  .hero h1 .en{font-family:"JetBrains Mono",monospace;font-weight:400;font-size:.42em;
-    letter-spacing:.06em;color:#ffffffb0;display:block;margin-top:10px}
-  .hero .inst{color:#ffffffc4;font-size:1rem;margin-top:16px}
-  .navlinks{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:28px}
-  .navlinks a{font-family:"JetBrains Mono",monospace;font-size:13px;text-decoration:none;
-    color:#ffffffd0;padding:7px 16px;border:1px solid #ffffff26;border-radius:999px;transition:.2s}
-  .navlinks a:hover,.navlinks a:focus-visible{background:#fff;color:var(--ink);border-color:#fff}
-  .socials{display:flex;gap:12px;justify-content:center;margin-top:24px}
-  .socials a{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;
-    background:#ffffff14;border:1px solid #ffffff20;transition:.2s}
-  .socials a:hover{background:var(--violet);border-color:var(--violet);transform:translateY(-3px)}
+  .avatar{width:130px;height:130px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid #ffffff2e;box-shadow:0 12px 40px -12px #00000066;margin:18px auto 22px;display:block}
+  .hero h1{font-weight:800;font-size:2.25rem;line-height:1.1}
+  .hero h1 .en{font-family:"JetBrains Mono",monospace;font-weight:400;font-size:.38em;letter-spacing:.08em;color:#ffffffb0;display:block;margin-top:10px}
+  .hero .inst{color:#ffffffc9;font-size:.92rem;margin-top:18px;line-height:1.7}
+  .navlinks{display:flex;flex-direction:column;gap:10px;margin-top:38px}
+  .navlinks a{width:100%;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;text-decoration:none;color:#ffffffd0;padding:12px 16px;border:1px solid #ffffff2b;border-radius:10px;transition:.2s}
+  .navlinks a:hover,.navlinks a:focus-visible{background:#fff;color:var(--ink);border-color:#fff;transform:translateX(3px)}
+  .socials{display:flex;gap:12px;justify-content:center;margin-top:auto;padding-top:28px}
+  .socials a{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;background:#ffffff14;border:1px solid #ffffff20;transition:.2s}
+  .socials a:hover{background:#ffffff2b;border-color:#ffffff55;transform:translateY(-3px)}
   .socials svg{width:19px;height:19px;color:#fff}
 
+  main{margin-left:var(--sidebar);min-height:100vh}
   section{padding:66px 0}
   @media(max-width:640px){section{padding:48px 0}}
   .sec-head{margin-bottom:38px}
@@ -77,7 +71,7 @@
     border:1px solid var(--line);padding:3px 9px;border-radius:6px}
   .exp-wrap{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 
-  footer{text-align:center;padding:44px 24px}
+  footer{margin-left:var(--sidebar);text-align:center;padding:44px 24px}
   footer .mail{font-family:"JetBrains Mono",monospace;font-size:14px;text-decoration:none;color:var(--violet)}
   footer .mail:hover{text-decoration:underline}
   footer .cr{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);margin-top:14px}
@@ -87,25 +81,27 @@
   @media(prefers-reduced-motion:reduce){*{animation:none!important}
     .reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
   a:focus-visible,.langbtn:focus-visible{outline:2px solid var(--violet);outline-offset:3px;border-radius:8px}
+  @media(max-width:850px){
+    .hero{position:relative;width:100%;height:auto;min-height:auto;padding:56px 24px 32px}
+    .avatar{width:118px;height:118px;margin-top:10px}
+    .navlinks{flex-direction:row;justify-content:center;flex-wrap:wrap;margin-top:28px}
+    .navlinks a{width:auto;min-width:130px}
+    .socials{margin-top:24px}
+    main,footer{margin-left:0}
+  }
 </style>
 </head>
 <body>
-<!-- ══ SIDE TABS ══ -->
-<nav class="side-tabs" aria-label="Section Navigation">
-  <a href="#education">EDUCATION</a>
-  <a href="#experience">EXPERIENCE</a>
-</nav>
-  
+
 <!-- ══ HEADER ══ -->
 <header class="hero">
   <button class="langbtn" id="langToggle" aria-label="切換語言 / Switch language">EN</button>
   <img class="avatar" src="profile.jpg" alt="侯惠晏 Hou Hui Yen">
   <h1 class="disp"><span data-en="Hou Hui Yen">侯惠晏</span><span class="en" data-en="侯惠晏">HOU HUI YEN</span></h1>
-  <p class="inst" data-en="Graduate Institute of Information Management, National Taipei University">國立臺北大學 資訊管理研究所</p>
+  <p class="inst" data-en="Graduate Institute of Information Management, National Taipei University">國立臺北大學<br>資訊管理研究所</p>
   <nav class="navlinks">
-    <a href="#education" data-en="Education">學歷</a>
-    <a href="#experience" data-en="Experience">經歷</a>
-    <a href="mailto:snsd920823@gmail.com" data-en="Contact">聯絡</a>
+    <a href="#education" data-en="EDUCATION">學歷 EDUCATION</a>
+    <a href="#experience" data-en="EXPERIENCE">經歷 EXPERIENCE</a>
   </nav>
   <div class="socials">
     <a href="mailto:snsd920823@gmail.com" aria-label="Email">
@@ -117,6 +113,8 @@
     </a>
   </div>
 </header>
+
+<main>
 
 <!-- ══ 學歷 EDUCATION ══ -->
 <section id="education">
@@ -224,6 +222,8 @@
   </div>
 </section>
 </div>
+
+</main>
 
 <footer>
   <a class="mail" href="mailto:snsd920823@gmail.com">snsd920823@gmail.com</a>
